@@ -35,6 +35,7 @@ dependencies {
     implementation libs.drawerlayout
     implementation libs.glide
     implementation libs.recyclerview
+    implementation libs.play.services.maps
     annotationProcessor libs.compiler
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
