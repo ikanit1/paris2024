@@ -1,0 +1,11 @@
+<resources>
+    <!-- Базовый стиль приложения -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Цветовая схема вашего приложения -->
+        <item name="colorPrimary">@color/white  </item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/purple_200</item>
+
+        <!-- Другие атрибуты стиля, такие как шрифты, размеры и т.д., могут быть добавлены здесь -->
+    </style>
+</resources>

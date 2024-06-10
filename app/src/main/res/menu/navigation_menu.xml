@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_news"
+        android:icon="@drawable/news"
+        android:title="Новости" />
+    <item
+        android:id="@+id/nav_schedule"
+        android:icon="@drawable/schedule"
+        android:title="Расписание" />
+    <item
+        android:id="@+id/nav_store"
+        android:icon="@drawable/store"
+        android:title="Магазин" />
+    <item
+        android:id="@+id/nav_tickets"
+        android:icon="@drawable/tickets"
+        android:title="Билеты" />
+    <item
+        android:id="@+id/nav_venues"
+        android:icon="@drawable/venues"
+        android:title="Места" />
+    <item
+        android:id="@+id/nav_qualifiers"
+        android:icon="@drawable/qualifiers"
+        android:title="Квалификация" />
+    <item
+        android:id="@+id/nav_torch"
+        android:icon="@drawable/torch"
+        android:title="Факел" />
+    <item
+        android:id="@+id/nav_celebration"
+        android:icon="@drawable/celebration"
+        android:title="Празднование" />
+</menu>
