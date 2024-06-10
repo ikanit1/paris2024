@@ -1,5 +1,6 @@
 package com.example.paris2200;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import androidx.annotation.NonNull;
@@ -18,11 +19,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Инициализация DrawerLayout
+        // Initialize DrawerLayout
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.navigation_view);
 
-        // Настройка ActionBarDrawerToggle
+        // Setup ActionBarDrawerToggle
         toggle = new ActionBarDrawerToggle(
                 this,
                 drawerLayout,
@@ -32,34 +33,35 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        // Отображение кнопки меню в ActionBar
+        // Display menu button in ActionBar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Установка слушателя для элементов меню
+        // Set listener for menu items
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                // Обработка нажатий на элементы меню
+                // Handle menu item clicks
                 int itemId = item.getItemId();
 
                 if (itemId == R.id.nav_news) {
-                    // Логика для "Новости"
+                    startActivity(new Intent(MainActivity.this, NewsActivity.class));
                 } else if (itemId == R.id.nav_schedule) {
-                    // Логика для "Расписание"
+                    startActivity(new Intent(MainActivity.this, ScheduleActivity.class));
                 } else if (itemId == R.id.nav_store) {
-                    // Логика для "Магазин"
+                    startActivity(new Intent(MainActivity.this, StoreActivity.class));
                 } else if (itemId == R.id.nav_tickets) {
-                    // Логика для "Билеты"
+                    startActivity(new Intent(MainActivity.this, TicketsActivity.class));
                 } else if (itemId == R.id.nav_venues) {
-                    // Логика для "Места"
+                    startActivity(new Intent(MainActivity.this, VenuesActivity.class));
                 } else if (itemId == R.id.nav_qualifiers) {
-                    // Логика для "Квалификация"
+                    startActivity(new Intent(MainActivity.this, QualifiersActivity.class));
                 } else if (itemId == R.id.nav_torch) {
-                    // Логика для "Факел"
+                    startActivity(new Intent(MainActivity.this, TorchActivity.class));
                 } else if (itemId == R.id.nav_celebration) {
-                    // Логика для "Празднование"
+                    startActivity(new Intent(MainActivity.this, CelebrationActivity.class));
                 }
-                // Закрытие Drawer после выбора элемента
+
+                // Close the drawer after item selection
                 drawerLayout.closeDrawers();
                 return true;
             }
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        // Обработка нажатий на элементы меню
+        // Handle menu item clicks
         if (toggle.onOptionsItemSelected(item)) {
             return true;
         }

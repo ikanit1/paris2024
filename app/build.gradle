@@ -33,6 +33,9 @@ dependencies {
     implementation libs.appcompat
     implementation libs.material
     implementation libs.drawerlayout
+    implementation libs.glide
+    implementation libs.recyclerview
+    annotationProcessor libs.compiler
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core

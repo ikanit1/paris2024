@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.paris2200">
+    <uses-permission android:name="android.permission.INTERNET"/>
+
 
     <application
         android:allowBackup="true"
@@ -23,6 +25,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ScheduleActivity" />
+        <activity android:name=".StoreActivity" />
+        <activity android:name=".TicketsActivity" />
+        <activity android:name=".VenuesActivity" />
+        <activity android:name=".QualifiersActivity" />
+        <activity android:name=".TorchActivity" />
+        <activity android:name=".CelebrationActivity" />
+        <activity android:name=".NewsActivity" />
+
     </application>
 
 </manifest>
