@@ -36,8 +36,11 @@ dependencies {
     implementation libs.glide
     implementation libs.recyclerview
     implementation libs.play.services.maps
+    implementation libs.room.common
+    implementation libs.room.runtime
     annotationProcessor libs.compiler
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+    annotationProcessor libs.room.compiler
 }
