@@ -3,15 +3,8 @@ package com.example.paris2200;
 public class NewsItem {
     private String title;
     private String description;
-    private String imageUrl;
-    private String link;
-
-    public NewsItem(String title, String description, String imageUrl, String link) {
-        this.title = title;
-        this.description = description;
-        this.imageUrl = imageUrl;
-        this.link = link;
-    }
+    private String urlToImage;
+    private String url;
 
     public String getTitle() {
         return title;
@@ -21,11 +14,11 @@ public class NewsItem {
         return description;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getUrlToImage() {
+        return urlToImage;
     }
 
-    public String getLink() {
-        return link;
+    public String getUrl() {
+        return url;
     }
 }

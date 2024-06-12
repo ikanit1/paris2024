@@ -1,16 +1,33 @@
 package com.example.paris2200;
 
 import android.os.Bundle;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScheduleActivity extends AppCompatActivity {
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.provider.CalendarContract;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+public class ScheduleActivity extends AppCompatActivity implements ScheduleAdapter.OnItemClickListener {
     private RecyclerView recyclerViewSchedule;
     private ScheduleAdapter scheduleAdapter;
     private List<ScheduleItem> scheduleList;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +36,20 @@ public class ScheduleActivity extends AppCompatActivity {
 
         recyclerViewSchedule = findViewById(R.id.recyclerViewSchedule);
         recyclerViewSchedule.setLayoutManager(new LinearLayoutManager(this));
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
 
         scheduleList = new ArrayList<>();
+        populateScheduleList();
+        scheduleAdapter = new ScheduleAdapter(scheduleList, this);
+        recyclerViewSchedule.setAdapter(scheduleAdapter);
+
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            Toast.makeText(ScheduleActivity.this, "Обновление данных...", Toast.LENGTH_SHORT).show();
+            swipeRefreshLayout.setRefreshing(false);
+        });
+    }
+
+    private void populateScheduleList() {
         scheduleList.add(new ScheduleItem("Регби", "2024-07-24", "09:00 - 12:00"));
         scheduleList.add(new ScheduleItem("Футбол", "2024-07-24", "15:00 - 17:00"));
         scheduleList.add(new ScheduleItem("Футбол", "2024-08-09", "18:00 - 20:00"));
@@ -90,4 +119,32 @@ public class ScheduleActivity extends AppCompatActivity {
         scheduleAdapter = new ScheduleAdapter(scheduleList, this); // Передаем контекст здесь
         recyclerViewSchedule.setAdapter(scheduleAdapter);
     }
+    @Override
+    public void onItemClick(ScheduleItem item) {
+        addEventToCalendar(item);
+    }
+
+    private void addEventToCalendar(ScheduleItem item) {
+        Calendar beginTime = Calendar.getInstance();
+        // Разбиваем дату и время на составляющие
+        String[] dateParts = item.getDate().split("-");
+        String[] timeParts = item.getTime().split(" - ")[0].split(":");
+        beginTime.set(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]) - 1, Integer.parseInt(dateParts[2]), Integer.parseInt(timeParts[0]), Integer.parseInt(timeParts[1]));
+
+        Calendar endTime = Calendar.getInstance();
+        String[] endTimeParts = item.getTime().split(" - ")[1].split(":");
+        endTime.set(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]) - 1, Integer.parseInt(dateParts[2]), Integer.parseInt(endTimeParts[0]), Integer.parseInt(endTimeParts[1]));
+
+        Intent intent = new Intent(Intent.ACTION_INSERT)
+                .setData(CalendarContract.Events.CONTENT_URI)
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
+                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
+                .putExtra(CalendarContract.Events.TITLE, item.getEventName())
+                .putExtra(CalendarContract.Events.DESCRIPTION, "Описание события")
+                .putExtra(CalendarContract.Events.EVENT_LOCATION, "Местоположение")
+                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
+
+        startActivity(intent);
+    }
 }
+

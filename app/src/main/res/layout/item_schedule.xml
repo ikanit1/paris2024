@@ -3,7 +3,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:layout_margin="8dp"
+    android:elevation="4dp">
 
     <TextView
         android:id="@+id/textViewEvent"
@@ -12,7 +15,8 @@
         android:text="Event Name"
         android:textColor="@color/black"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:paddingTop="8dp" />
 
     <TextView
         android:id="@+id/textViewDate"
@@ -20,7 +24,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:text="Event Date"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:paddingTop="4dp" />
 
     <TextView
         android:id="@+id/textViewTime"
@@ -28,5 +33,6 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:text="Event Time"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:paddingTop="4dp" />
 </LinearLayout>
