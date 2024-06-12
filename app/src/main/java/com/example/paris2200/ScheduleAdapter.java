@@ -65,3 +65,4 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
         return scheduleItems.size();
     }
 }
+// изменение кода
