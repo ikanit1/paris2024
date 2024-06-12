@@ -21,7 +21,6 @@ public class ScheduleActivity extends AppCompatActivity {
         recyclerViewSchedule.setLayoutManager(new LinearLayoutManager(this));
 
         scheduleList = new ArrayList<>();
-        // Adding schedule data with actual event times
         scheduleList.add(new ScheduleItem("Регби", "2024-07-24", "09:00 - 12:00"));
         scheduleList.add(new ScheduleItem("Футбол", "2024-07-24", "15:00 - 17:00"));
         scheduleList.add(new ScheduleItem("Футбол", "2024-08-09", "18:00 - 20:00"));
@@ -88,7 +87,7 @@ public class ScheduleActivity extends AppCompatActivity {
         scheduleList.add(new ScheduleItem("Брейк-данс", "2024-08-10", "16:00 - 18:00"));
         scheduleList.add(new ScheduleItem("Церемония закрытия", "2024-08-11", "20:00 - 22:00"));
 
-        scheduleAdapter = new ScheduleAdapter(scheduleList);
+        scheduleAdapter = new ScheduleAdapter(scheduleList, this); // Передаем контекст здесь
         recyclerViewSchedule.setAdapter(scheduleAdapter);
     }
 }
